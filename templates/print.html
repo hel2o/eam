@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>打印资产标签</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <style>
+        @media print {
+            @page {
+                margin: 0;
+            }
+
+            body {
+                line-height: 16px;
+                font: 8px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" style="margin-bottom: 5px;margin-top: 5px ">
+    <button type="button" class="layui-btn" onclick="doPrint()">打印资产标签</button>
+</div>
+<ccc>
+    <div id="print">
+        <div id="lable" class="layui-container" style="width: auto;text-align: center">
+
+        </div>
+    </div>
+</ccc>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/qrcode.min.js" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'jquery'], function () {
+        let $ = layui.$;
+
+        let C = '';
+        parent.printData.forEach(function (v, i) {
+            if (i % 3 === 0) {
+                C = C + '<div class="layui-row layui-col-space5">'
+            }
+            C = C + `<div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                    <table style="line-height:25px;" border=1 width="98%">
+                        <tbody>
+                        <tr>
+                            <td width="auto">` + v.name + `</td>
+                            <td width="75px" rowspan="3">
+                                <div id="qrcode` + v.id + `"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ` + v.ip + `
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ` + v.person + `
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>`;
+            if (((i - 2) % 3 === 0) || (i === parent.printData.length)) {
+                C = C + '</div>';
+            }
+        });
+         $("#lable").append(C);
+        parent.printData.forEach(function (v, i) {
+             new QRCode(document.getElementById("qrcode" + v.id), {
+                text: window.location.protocol+"//"+window.location.host+"/look?id="+v.id,
+                height: 74,
+                width: 74,
+            });
+        });
+
+    });
+
+    function doPrint() {
+        bdhtml = window.document.body.innerHTML;
+        sprnstr = "<ccc>"; //开始打印标识字符串有17个字符
+        eprnstr = "<ccc>"; //结束打印标识字符串
+        prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 5); //从开始打印标识之后的内容
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+        window.document.body.innerHTML = prnhtml; //把需要打印的指定内容赋给body.innerHTML
+        window.print(); //调用浏览器的打印功能打印指定区域
+        window.document.body.innerHTML = bdhtml; // 最后还原页面
+    }
+</script>
+</body>
+</html>

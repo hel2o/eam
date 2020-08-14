@@ -1,0 +1,18 @@
+2020/08/13 17:25:37.325893 server.go:3061: http: TLS handshake error from 172.25.1.30:62399: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:37.352732 server.go:3061: http: TLS handshake error from 172.25.1.30:62400: tls: client offered only unsupported versions: []
+2020/08/13 17:25:37.353910 server.go:3061: http: TLS handshake error from 172.25.1.30:62401: EOF
+2020/08/13 17:25:37.665619 server.go:3061: http: TLS handshake error from 172.25.1.30:62403: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:37.667602 server.go:3061: http: TLS handshake error from 172.25.1.30:62404: tls: client offered only unsupported versions: []
+2020/08/13 17:25:37.669786 server.go:3061: http: TLS handshake error from 172.25.1.30:62405: EOF
+2020/08/13 17:25:37.805404 server.go:3061: http: TLS handshake error from 172.25.1.30:62406: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:37.806700 server.go:3061: http: TLS handshake error from 172.25.1.30:62407: tls: client offered only unsupported versions: []
+2020/08/13 17:25:37.807771 server.go:3061: http: TLS handshake error from 172.25.1.30:62408: EOF
+2020/08/13 17:25:50.546164 server.go:3061: http: TLS handshake error from 172.25.1.30:62091: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:50.548607 server.go:3061: http: TLS handshake error from 172.25.1.30:62092: tls: client offered only unsupported versions: []
+2020/08/13 17:25:50.549965 server.go:3061: http: TLS handshake error from 172.25.1.30:62093: EOF
+2020/08/13 17:25:50.766244 server.go:3061: http: TLS handshake error from 172.25.1.30:62094: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:50.775096 server.go:3061: http: TLS handshake error from 172.25.1.30:62095: tls: client offered only unsupported versions: []
+2020/08/13 17:25:50.777308 server.go:3061: http: TLS handshake error from 172.25.1.30:62096: EOF
+2020/08/13 17:25:50.826940 server.go:3061: http: TLS handshake error from 172.25.1.30:62097: tls: client offered only unsupported versions: [301]
+2020/08/13 17:25:50.831163 server.go:3061: http: TLS handshake error from 172.25.1.30:62098: tls: client offered only unsupported versions: []
+2020/08/13 17:25:50.833018 server.go:3061: http: TLS handshake error from 172.25.1.30:62099: EOF

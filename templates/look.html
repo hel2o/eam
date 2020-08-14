@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>祈福集团IT资产管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+</head>
+<body>
+<div style="margin: 10px">
+    <table class="layui-table">
+        <colgroup>
+            <col width="40%" style="background-color: #f2f2f2">
+            <col width="60%">
+        </colgroup>
+        <tbody>
+        <tr>
+            <td>ID</td>
+            <td>{{.data.Id}}</td>
+        </tr>
+        <tr>
+            <td>资产编号</td>
+            <td>{{.data.Code}}</td>
+        </tr>
+        <tr>
+            <td>设备名</td>
+            <td>{{.data.Name}}</td>
+        </tr>
+        <tr>
+            <td>位置</td>
+            <td>{{.data.Place}}</td>
+        </tr>
+        <tr>
+            <td>负责人</td>
+            <td>{{.data.Person}}</td>
+        </tr>
+        <tr>
+            <td>公司</td>
+            <td>{{.data.Company}}</td>
+        </tr>
+        <tr>
+            <td>部门</td>
+            <td>{{.data.Department}}</td>
+        </tr>
+        <tr>
+            <td>操作系统</td>
+            <td>{{.data.Os}}</td>
+        </tr>
+        <tr>
+            <td>应用服务软件</td>
+            <td>{{.data.AppService}}</td>
+        </tr>
+        <tr>
+            <td>数据库软件</td>
+            <td>{{.data.SqlType}}</td>
+        </tr>
+        <tr>
+            <td>服务器品牌型号</td>
+            <td>{{.data.ServerModel}}</td>
+        </tr>
+        <tr>
+            <td>硬件参数</td>
+            <td>{{.data.ServerPara}}</td>
+        </tr>
+        <tr>
+            <td>开发对接人</td>
+            <td>{{.data.Developer}}</td>
+        </tr>
+        <tr>
+            <td>服务编号</td>
+            <td>{{.data.ServerCode}}</td>
+        </tr>
+        <tr>
+            <td>出厂日期</td>
+            <td>{{.data.PD}}</td>
+        </tr>
+        <tr>
+            <td>是否虚拟机</td>
+            <td>{{.data.IsVirtual}}</td>
+        </tr>
+        <tr>
+            <td>宿主机</td>
+            <td>{{.data.RealHost}}</td>
+        </tr>
+        <tr>
+            <td>管理地址</td>
+            <td>{{.data.Ip}}</td>
+        </tr>
+        <tr>
+            <td>备注</td>
+            <td>{{.data.Remarks}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="layui/layui.js" charset="utf-8"></script>
+
+</body>
+</html>

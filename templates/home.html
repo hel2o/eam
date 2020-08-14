@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>祈福集团IT资产管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+</head>
+<body>
+<div class="layui-col-md12" style="margin-top: 20px">
+    <div class="layui-card">
+        <div class="layui-card-header" style="text-align: center;font-size: 1.5em">祈福集团IT资产管理系统</div>
+        <div class="layui-card-body">
+            <div class="layui-inline">
+                <input class="layui-input" name="id" id="search" autocomplete="off">
+            </div>
+            <button class="layui-btn" id="reload">搜索</button>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-normal" id="add">新增</button>
+                <button class="layui-btn layui-btn-warm" id="del">删除</button>
+                <button class="layui-btn layui-btn-danger" id="print">打印</button>
+            </div>
+            <table class="layui-hide" id="LAY_table" lay-filter="LAY_table"></table>
+        </div>
+    </div>
+</div>
+<div style="display: none;width: 97%;margin-top: 10px" id="item">
+    <form class="layui-form" action="">
+        <div class="layui-row">
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">资产编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="code" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" placeholder=""
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所在位置</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="place" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">公司</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="company" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">部门</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="department" placeholder=""
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">操作系统</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="os" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">应用软件</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="appService" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据库软件</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sqlType" placeholder=""
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">品牌型号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="serverModel" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">硬件参数</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="serverPara" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开发对接人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developer" placeholder=""
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">服务编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="serverCode" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出厂日期</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="PD" id="PD" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否虚拟机</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="isVirtual" lay-skin="switch" lay-text="是|否">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">宿主机</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="realHost" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">负责人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="person" placeholder=""
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">管理地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ip" placeholder="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea name="remarks" laceholder=""
+                                  class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align: center;margin-left: 0px">
+                <button class="layui-btn" lay-submit lay-filter="formSubmit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="layui/layui.js" charset="utf-8"></script>
+<script>
+    var printData = {};
+    layui.use(['layer', 'table', 'jquery', 'laydate'], function () {
+        let table = layui.table;
+        let $ = layui.$;
+        let layer = layui.layer;
+        let form = layui.form;
+        let laydate = layui.laydate;
+        table.render({
+            elem: '#LAY_table'
+            , url: '/getEAM'
+            , size: 'sm'
+            , toolbar: true
+            , defaultToolbar: ['filter']
+            , cols: [[
+                {checkbox: true, fixed: true}
+                , {field: 'id', title: 'ID', sort: true}
+                , {field: 'code', title: '资产编号', sort: true, edit: 'text', hide: true}
+                , {field: 'name', title: '设备名', edit: 'text'}
+                , {field: 'place', title: '位置', edit: 'text'}
+                , {field: 'person', title: '负责人', edit: 'text'}
+                , {field: 'company', title: '公司', edit: 'text'}
+                , {field: 'department', title: '部门', edit: 'text'}
+                , {field: 'os', title: '操作系统', edit: 'text', hide: true}
+                , {field: 'appService', title: '应用服务软件', edit: 'text', hide: true}
+                , {field: 'sqlType', title: '数据库软件', edit: 'text', hide: true}
+                , {field: 'serverModel', title: '服务器品牌型号', edit: 'text', hide: true}
+                , {field: 'serverPara', title: '硬件参数', edit: 'text', hide: true}
+                , {field: 'developer', title: '开发对接人', edit: 'text', hide: true}
+                , {field: 'serverCode', title: '服务编号', edit: 'text', hide: true}
+                , {field: 'PD', title: '出厂日期', edit: 'text', hide: true}
+                , {
+                    field: 'isVirtual', title: '是否虚拟机', edit: 'text', hide: true,
+                    templet: function (d) {
+                        if (d.isVirtual === "on") {
+                            return "是"
+                        } else {
+                            return "否"
+                        }
+                    }
+                }
+                , {field: 'realHost', title: '宿主机', edit: 'text', hide: true}
+                , {field: 'ip', title: '管理地址', edit: 'text'}
+                , {field: 'remarks', title: '备注', edit: 'text'}
+
+            ]]
+            , id: 'EAM_table_ID'
+            , page: true
+            , method: 'post'
+            , parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "msg": res.msg,
+                    "data": res.data,
+                    "count": res.count
+                };
+            }
+            , height: 'full-160'
+            , limit: 30
+        });
+
+        table.on('edit(LAY_table)', function (obj) {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/modify",
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(obj.data),
+                beforeSend: function () {
+                    index = layer.msg("修改中...", {
+                        icon: 16,
+                        time: 0,
+                        shade: [0.5, "#000"]
+                    });
+                },
+                success: function (rs) {
+                    layer.close(index);
+                    if (rs.code === 3000) {
+                        TableReload();
+                        layer.msg("修改资产" + obj.field + "成功", {
+                            icon: 1,
+                            shade: [0.5, "#000"],
+                            time: 1500
+                        });
+                    } else {
+                        layer.msg("操作失败 " + rs.msg, {
+                            shade: [0.5, "#000"],
+                            icon: 2
+                        });
+                    }
+
+                },
+                error: function (ers) {
+                    layer.msg("获取数据失败 " + JSON.stringify(ers), {
+                        shade: [0.5, "#000"],
+                        icon: 2
+                    });
+                }
+            });
+        });
+
+        $("#add").click(function () {
+            layer.open({
+                type: 1,
+                anim: 0,
+                title: '添加资产',
+                move: true,
+                area: ["1200px", "auto"],
+                content: $("#item"),
+                success: function () {
+                    laydate.render({
+                        elem: '#PD'
+                    });
+                }
+            });
+        });
+
+        $("#del").click(function () {
+            let obj = table.checkStatus('EAM_table_ID');
+            if (obj.data.length === 0) {
+                layer.msg("请选择要删除的选项");
+                return
+            }
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/del",
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(obj.data),
+                beforeSend: function () {
+                    index = layer.msg("加载中", {
+                        icon: 16,
+                        time: 0,
+                        shade: [0.5, "#000"]
+                    });
+                },
+                success: function (rs) {
+                    layer.close(index);
+                    if (rs.code === 3000) {
+                        TableReload();
+                        layer.msg("成功删除 " + rs.count + " 资产", {
+                            icon: 1,
+                            shade: [0.5, "#000"],
+                            time: 1500
+                        });
+                    } else {
+                        layer.msg("操作失败 " + rs.msg, {
+                            shade: [0.5, "#000"],
+                            icon: 2
+                        });
+                    }
+
+                },
+                error: function (ers) {
+                    layer.msg("获取数据失败 " + JSON.stringify(ers), {
+                        shade: [0.5, "#000"],
+                        icon: 2
+                    });
+                }
+            });
+        });
+
+        $("#reload").click(function () {
+            TableReload();
+        });
+
+        $("#print").click(function () {
+            let obj = table.checkStatus('EAM_table_ID');
+            if (obj.data.length === 0) {
+                layer.msg("请选择要打印的选项");
+                return
+            }
+            printData = obj.data;
+            let print = layer.open({
+                type: 2,
+                anim: 0,
+                maxmin: true,
+                content: 'print'
+            });
+            layer.full(print);
+        });
+
+        form.on('submit(formSubmit)', function (data) {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/add",
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(data.field),
+                beforeSend: function () {
+                    index = layer.msg("加载中", {
+                        icon: 16,
+                        time: 0,
+                        shade: [0.5, "#000"]
+                    });
+                },
+                success: function (rs) {
+                    layer.close(index);
+                    if (rs.code === 3000) {
+                        TableReload();
+                        layer.msg("新增资产成功", {
+                            icon: 1,
+                            shade: [0.5, "#000"],
+                            time: 1500
+                        });
+                    } else {
+                        layer.msg("操作失败 " + rs.msg, {
+                            shade: [0.5, "#000"],
+                            icon: 2
+                        });
+                    }
+
+                },
+                error: function (ers) {
+                    layer.msg("获取数据失败 " + JSON.stringify(ers), {
+                        shade: [0.5, "#000"],
+                        icon: 2
+                    });
+                }
+            });
+            return false;
+        });
+
+        function TableReload() {
+            table.reload('EAM_table_ID', {
+                where: {search: $("#search").val()}
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
